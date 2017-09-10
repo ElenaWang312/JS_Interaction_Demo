@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+        #myInput {
+            background-image: url('http://cdn.acmcoder.com/client/files/file_j78wuvk9.png'); 
+            background-position: 10px 12px; 
+            background-repeat: no-repeat; 
+            width: 100%; 
+            font-size: 16px; 
+            padding: 12px 20px 12px 40px; 
+            border: 1px solid #ddd; 
+            margin-bottom: 12px; 
+        }
+
+        #myUL {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #myUL li a {
+            border: 1px solid #ddd; 
+            margin-top: -1px; 
+            background-color: #f6f6f6; 
+            padding: 12px; 
+            text-decoration: none;
+            font-size: 18px; 
+            color: black; 
+            display: none; 
+        }
+
+        #myUL li a.header {
+            background-color: #e2e2e2; 
+            cursor: default; 
+        }
+
+        #myUL li a:hover:not(.header) {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索...">
+
+    <ul id="myUL">
+        <li><a href="#" class="header">A</a></li>
+        <li><a href="#">ACM</a></li>
+        <li><a href="#">ACMCoder</a></li>
+
+        <li><a href="#" class="header">C</a></li>
+        <li><a href="#">Cameroon</a></li>
+        <li><a href="#">Colombia</a></li>
+
+        <li><a href="#" class="header">D</a></li>
+        <li><a href="#">Decision</a></li>
+        <li><a href="#">Demand</a></li>
+    </ul>
+<script type="text/javascript">
+    var input = document.getElementById('myInput');
+    var myUL = document.getElementById('myUL');
+    var list = myUL.getElementsByTagName('a');
+
+      function myFunction () {
+            var val = input.value.trim()
+            var reg = new RegExp(val)
+            if(val === ""){
+                for (var i = 0; i < list.length; i++) {
+                    console.log("应该消失")
+                    list[i].style.display = "none"
+                }
+                return
+            }
+            for (var i = 0; i < list.length; i++) {
+                if(list[i].innerHTML.match(reg)){
+                    list[i].style.display = "block"
+                }else{
+                    list[i].style.display = "none"
+                }
+            }
+      }
+</script>
+</body>
+</html>
